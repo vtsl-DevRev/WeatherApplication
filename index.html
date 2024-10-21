@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherApp</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Weather Application</h1>
+    </header>
+    <main>
+        <div id="inputBar">
+            <input type="text" id="city" placeholder="Enter City">
+            <button id="search">Search</button>
+        </div>
+        <div id="alertWindow">
+            ALERT ALERT
+        </div>
+        <div id="weatherContainer">
+            <div id="overviewPanel">
+                <div id="currentDay">
+                    <div id="leftCurrentPanel">
+                        <h1 id="location">Location</h1>
+                        <h2 id="dateDay">Day</h2>
+                        <p id="textStatus">Here</p>
+                    </div>
+                    <div id="rightCurrentPanel">
+                        <img id="currentWeatherIcon" alt="Weather Icon">
+                    </div>
+                </div>
+                <div id="forecastPanel">
+                </div>
+            </div>
+            <div id="detailsPanel">
+                <button class="detailButtons" id="maxTemp">Max Temp</button>
+                <button class="detailButtons" id="minTemp">Min Temp</button>
+                <button class="detailButtons" id="wind">Wind</button>
+                <button class="detailButtons" id="humidity">Humidity</button>
+                <button class="detailButtons" id="precipitation">Precipitation</button>
+                <button class="detailButtons" id="cloudCover">Cloud Cover</button>
+                <button class="detailButtons" id="visibility">Visibility</button>
+                <button class="detailButtons" id="uvIndex">UV Index</button>
+                <button class="detailButtons" id="windChill">Wind Chill</button>
+                <button class="detailButtons" id="heatIndex">Heat Index</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+<script src="script.js"></script>

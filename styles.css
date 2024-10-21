@@ -1,0 +1,234 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7fa;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+header {
+    background-color: #00796b;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Input Bar */
+#inputBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Allow wrapping of input and button */
+}
+
+#inputBar input[type="text"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #00796b;
+    border-radius: 4px;
+    width: calc(100% - 20px); /* Full width minus gaps */
+    max-width: 500px;
+}
+
+#inputBar button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #00796b;
+    color: white;
+    cursor: pointer;
+    width: calc(100% - 20px); /* Full width minus gaps */
+    max-width: 150px;
+}
+
+#inputBar button:hover {
+    background-color: #004d40;
+}
+
+/* Alert Window Styles */
+#alertWindow {
+    display: none; /* Initially hidden */
+    max-width: 500px; /* Set a max width */
+    max-height: 200px; /* Set a max height */
+    padding: 15px; /* Add padding */
+    background-color: #ffeb3b; /* Bright background for visibility */
+    color: #000; /* Text color */
+    border: 2px solid #fbc02d; /* Border color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    margin: 0 auto; /* Centering the alert window */
+    overflow: auto; /* Allow scrolling if content exceeds height */
+    position: relative; /* Relative positioning for any potential overlays */
+    z-index: 10; /* Ensure it appears above other elements */
+}
+
+/* Show alert window */
+#alertWindow.visible {
+    display: block; /* Show when the class 'visible' is added */
+}
+
+/* Weather Container */
+#weatherContainer {
+    display: flex;
+    flex-direction: column; /* Stack vertically on small screens */
+    gap: 20px;
+    max-width: 100%; /* Prevent overflow */
+}
+
+/* Overview Panel */
+#overviewPanel {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Use full width */
+    box-sizing: border-box; /* Include padding and border */
+}
+
+#currentDay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#leftCurrentPanel {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    gap: 5px;
+}
+
+#rightCurrentPanel {
+    display: flex;
+    align-items: center;
+}
+
+#currentWeatherIcon {
+    width: 80px;
+    height: 80px;
+}
+
+/* Details Panel */
+#detailsPanel {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+}
+
+/* Detail Buttons */
+.detailButtons {
+    margin-top: 10px;
+    background-color: #4db6ac;
+    color: white;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.detailButtons:hover {
+    background-color: #00796b;
+}
+
+/* Forecast Panel */
+#forecastPanel {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    justify-content: space-between; /* Space between items */
+    background-color: #80deea;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Forecast Day */
+.forecastDay {
+    display: flex;
+    flex-direction: column; /* Stack day and temp vertically */
+    justify-content: center; /* Center content */
+    align-items: center; /* Center content */
+    width: calc(100% / 7 - 30px); /* Set width for 7 items with some gap */
+    margin-bottom: 10px;
+    background-color: beige; /* Background for each day */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px; /* Add some padding */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    #weatherContainer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #overviewPanel {
+        width: 72%;
+    }
+
+    #detailsPanel {
+        width: 24%;
+    }
+}
+
+@media (max-width: 767px) {
+    #inputBar {
+        flex-direction: column; /* Stack input and button */
+    }
+
+    #inputBar input[type="text"], 
+    #inputBar button {
+        width: 100%; /* Full width on small screens */
+    }
+
+    #currentDay {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #forecastPanel {
+        height: auto;
+    }
+
+    .forecastDay {
+        width: calc(100% / 3 - 10px); /* 3 items per row on small screens */
+    }
+}
+
+@media (max-width: 500px) {
+    .forecastDay {
+        width: 100%; /* Stack items on top of each other on very small screens */
+    }
+}
+
+/* Location and Date Styles */
+#location, 
+#dateDay {
+    color: #00796b;
+}
+
+#textStatus {
+    color: #00796b;
+    font-size: medium;
+    font-weight: bold;
+}
