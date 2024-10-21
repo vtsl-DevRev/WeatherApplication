@@ -25,7 +25,7 @@ const alertElement = document.getElementById('alertWindow');
 
 async function getCurrentData(cityName) {
     try {
-        const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=no`);
+        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=no`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -51,7 +51,7 @@ async function getCurrentData(cityName) {
         windChillElement.innerHTML = `Wind Chill : ${data.current.windchill_c}°C`;
         heatIndexElement.innerHTML = `Heat Index : ${data.current.heatindex_c}°C`;
 
-        const alertDataResponse = await fetch(`http://api.weatherapi.com/v1/alerts.json?key=${apiKey}&q=${cityName}`);
+        const alertDataResponse = await fetch(`https://api.weatherapi.com/v1/alerts.json?key=${apiKey}&q=${cityName}`);
         const alertData = alertDataResponse.json();
         if (alertData.alerts.length > 0) {
             alertWindow.classList.remove('visible');
@@ -67,7 +67,7 @@ async function getCurrentData(cityName) {
 
 async function getForecastData(cityName) {
     try {
-        const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&days=7&aqi=no&alerts=no`); 
+        const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&days=7&aqi=no&alerts=no`); 
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
