@@ -86,7 +86,7 @@ async function getForecastData(cityName) {
             newDiv.innerHTML = `
                 <h3>${element.date}</h3>
                 <img src="${element.day.condition.icon}" alt="weather icon">
-                <p>${element.day.avgtemp_c}°C</p>
+                <p>${element.day.mintemp_c}°C/${element.day.maxtemp_c}°C</p>
                 <p>${element.day.totalprecip_mm} mm</p>
                 <p>${element.day.daily_chance_of_rain}%</p>
                 <p>${element.day.avgvis_km} km</p>
@@ -110,8 +110,13 @@ searchButton.addEventListener('click', () => {
 
 homeLocation.addEventListener('click', () => {
     const homeCity = localStorage.getItem('homeLocation');
-    getCurrentData(homeCity);
-    getForecastData(homeCity);
+    if(homeCity){
+        getCurrentData(homeCity);
+        getForecastData(homeCity);
+    } else {
+        getCurrentData('London');
+        getForecastData('London');
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
