@@ -117,6 +117,8 @@ homeLocation.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const defaultLocation = localStorage.getItem('homeLocation');
     if (defaultLocation) {
+        homeLocation.innerHTML = "";
+        homeLocation.innerHTML = `${defaultLocation}`;
         getCurrentData(defaultLocation);
         getForecastData(defaultLocation);
     } else {
