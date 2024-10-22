@@ -9,8 +9,8 @@ const imageElement = document.getElementById('currentWeatherIcon');
 const textStatusElement = document.getElementById('textStatus');
 
 // Displaying the forecast data
-const maxTempElement = document.getElementById('maxTemp');
-const minTempElement = document.getElementById('minTemp');
+const tempElement = document.getElementById('temp');
+const feelsLikeElement = document.getElementById('feelsLike');
 const windElement = document.getElementById('wind');
 const humidityElement = document.getElementById('humidity');
 const precipitationElement = document.getElementById('precipitation');
@@ -40,8 +40,8 @@ async function getCurrentData(cityName) {
 
         textStatusElement.innerHTML = `Current Temp. ${data.current.temp_c}°C, Feels like. ${data.current.feelslike_c}°C, ${data.current.condition.text}`;
 
-        maxTempElement.innerHTML = `Max Temp. : ${data.current.temp_c}°C`;
-        minTempElement.innerHTML = `Min Temp. : ${data.current.feelslike_c}°C`;
+        tempElement.innerHTML = `Temp. : ${data.current.temp_c}°C`;
+        feelsLikeElement.innerHTML = `Feels Like : ${data.current.feelslike_c}°C`;
         windElement.innerHTML = `Wind : ${data.current.wind_kph} km/h || Wind Direction : ${data.current.wind_dir}`;
         humidityElement.innerHTML = `Humidity : ${data.current.humidity}%`;
         precipitationElement.innerHTML = `Precipitation : ${data.current.precip_mm} mm`;
@@ -102,4 +102,9 @@ searchButton.addEventListener('click', () => {
     } else {
         alert('Please enter a city name');
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    getCurrentData('London');
+    getForecastData('London');
 });
