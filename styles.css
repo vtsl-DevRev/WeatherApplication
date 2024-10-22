@@ -54,6 +54,11 @@ main {
     max-width: 150px;
 }
 
+#homeIcon {
+    width: 20px;
+    height: 30px;
+}
+
 #inputBar button:hover {
     background-color: #004d40;
 }

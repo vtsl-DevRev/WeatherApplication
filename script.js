@@ -23,6 +23,10 @@ const heatIndexElement = document.getElementById('heatIndex');
 // for alert
 const alertElement = document.getElementById('alertWindow');
 
+// for home Location
+const homeLocation = document.getElementById('homeLocation');
+const setHomeLocation = document.getElementById('homeIcon');
+
 async function getCurrentData(cityName) {
     try {
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=no`);
@@ -104,7 +108,28 @@ searchButton.addEventListener('click', () => {
     }
 });
 
+homeLocation.addEventListener('click', () => {
+    const homeCity = localStorage.getItem('homeLocation');
+    getCurrentData(homeCity);
+    getForecastData(homeCity);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
-    getCurrentData('London');
-    getForecastData('London');
+    const defaultLocation = localStorage.getItem('homeLocation');
+    if (defaultLocation) {
+        getCurrentData(defaultLocation);
+        getForecastData(defaultLocation);
+    } else {
+        getCurrentData('London');
+        getForecastData('London');
+    }
+});
+
+setHomeLocation.addEventListener('click', () => {
+    const homeCity = city.value;
+    if(homeCity) {
+        localStorage.setItem('homeLocation', homeCity);
+        homeLocation.innerHTML = "";
+        homeLocation.innerHTML = `${homeCity}`;
+    } 
 });
